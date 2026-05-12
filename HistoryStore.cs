@@ -1,3 +1,6 @@
+// File: HistoryStore.cs
+// Purpose: Manages local clipboard history persistence, ordering, trimming, record updates, and image file cleanup.
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;

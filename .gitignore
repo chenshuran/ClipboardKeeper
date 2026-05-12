@@ -1,3 +1,6 @@
+# File: .gitignore
+# Purpose: Lists local build outputs and editor metadata that should stay out of version control.
+
 bin/
 obj/
 

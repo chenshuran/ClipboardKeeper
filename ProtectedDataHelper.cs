@@ -1,3 +1,6 @@
+// File: ProtectedDataHelper.cs
+// Purpose: Wraps Windows DPAPI encryption and decryption for saved text, names, and image bytes.
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;

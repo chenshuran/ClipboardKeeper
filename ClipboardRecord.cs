@@ -1,3 +1,6 @@
+// File: ClipboardRecord.cs
+// Purpose: Represents one saved clipboard item and exposes XML-friendly encrypted fields plus convenience properties.
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;

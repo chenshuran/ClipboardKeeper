@@ -1,3 +1,6 @@
+// File: ClipboardReader.cs
+// Purpose: Reads the current Windows clipboard content and converts supported text or image data into clipboard history records.
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;

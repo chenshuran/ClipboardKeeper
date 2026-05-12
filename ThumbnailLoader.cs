@@ -1,3 +1,6 @@
+// File: ThumbnailLoader.cs
+// Purpose: Creates scaled thumbnail images from encrypted saved image files for list rendering.
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;

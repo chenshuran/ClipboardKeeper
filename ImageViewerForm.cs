@@ -1,3 +1,6 @@
+// File: ImageViewerForm.cs
+// Purpose: Shows a larger standalone preview window for saved clipboard images.
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;

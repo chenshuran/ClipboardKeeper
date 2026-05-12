@@ -1,3 +1,6 @@
+// File: GlyphButton.cs
+// Purpose: Provides a custom owner-drawn WinForms button optimized for compact glyph-only toolbar actions.
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;

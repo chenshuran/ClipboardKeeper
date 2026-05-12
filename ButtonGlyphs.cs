@@ -1,3 +1,6 @@
+// File: ButtonGlyphs.cs
+// Purpose: Builds, loads, and applies toolbar button glyph images for the WinForms controls.
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;

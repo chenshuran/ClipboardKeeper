@@ -1,3 +1,6 @@
+// File: CompactClipboardPopup.cs
+// Purpose: Implements the small tray popup used for quick access to recent clipboard items.
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;

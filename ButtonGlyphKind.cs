@@ -1,3 +1,6 @@
+// File: ButtonGlyphKind.cs
+// Purpose: Defines the logical glyph names used by icon-only buttons throughout the UI.
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;

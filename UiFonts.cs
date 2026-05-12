@@ -1,3 +1,6 @@
+// File: UiFonts.cs
+// Purpose: Centralizes the preferred UI font choice with a safe system-font fallback.
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;

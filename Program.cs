@@ -1,3 +1,6 @@
+// File: Program.cs
+// Purpose: Bootstraps the Windows Forms application and configures process DPI awareness before opening the main form.
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;

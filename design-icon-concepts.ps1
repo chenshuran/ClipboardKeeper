@@ -1,3 +1,6 @@
+# File: design-icon-concepts.ps1
+# Purpose: Generates visual icon concept previews used to explore Clipboard Keeper app branding directions.
+
 param(
     [string]$OutputDirectory = (Join-Path $PSScriptRoot "assets\icon-concepts")
 )

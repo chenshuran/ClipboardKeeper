@@ -1,3 +1,6 @@
+// File: ClipboardManagerForm.cs
+// Purpose: Implements the main Clipboard Keeper window, including capture flow, history list, preview pane, tray behavior, and user actions.
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;

@@ -1,3 +1,6 @@
+// File: ClipboardHistory.cs
+// Purpose: Provides the serializable root model for the saved clipboard history XML file.
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;

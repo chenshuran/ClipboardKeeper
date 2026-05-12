@@ -1,3 +1,6 @@
+// File: ProfessionalIcons.cs
+// Purpose: Loads embedded PNG icon resources and draws them into UI surfaces.
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;

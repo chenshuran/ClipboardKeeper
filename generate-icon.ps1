@@ -1,3 +1,6 @@
+# File: generate-icon.ps1
+# Purpose: Generates the application icon assets used by the Clipboard Keeper executable.
+
 param(
     [string]$OutputPath = (Join-Path $PSScriptRoot "assets\ClipboardKeeper.ico")
 )

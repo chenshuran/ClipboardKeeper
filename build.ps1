@@ -1,3 +1,6 @@
+# File: build.ps1
+# Purpose: Builds Clipboard Keeper with the .NET Framework C# compiler, embeds generated icons, and writes the executable to bin.
+
 param(
     [string]$Configuration = "Release"
 )

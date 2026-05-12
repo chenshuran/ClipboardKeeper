@@ -1,3 +1,6 @@
+# File: generate-ui-icons.ps1
+# Purpose: Generates the small toolbar and list icons embedded into the Clipboard Keeper application.
+
 param(
     [string]$OutputDirectory = (Join-Path $PSScriptRoot "assets\ui-icons")
 )

@@ -1,3 +1,6 @@
+// File: ProtectedImageLoader.cs
+// Purpose: Loads an encrypted saved image file and returns a disposable bitmap copy for UI display.
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;

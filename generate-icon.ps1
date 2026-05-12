@@ -98,6 +98,59 @@ function New-ClipboardIconBitmap {
     $graphics.Clear([System.Drawing.Color]::Transparent)
 
     $scale = $Size / 256.0
+
+    if ($Size -le 512) {
+        $smallBounds = [System.Drawing.RectangleF]::new(6 * $scale, 6 * $scale, 244 * $scale, 244 * $scale)
+        $smallBgBrush = New-Object System.Drawing.Drawing2D.LinearGradientBrush `
+            ($smallBounds),
+            ([System.Drawing.Color]::FromArgb(255, 36, 236, 205)),
+            ([System.Drawing.Color]::FromArgb(255, 76, 92, 255)),
+            ([System.Drawing.Drawing2D.LinearGradientMode]::ForwardDiagonal)
+        $smallBorderPen = New-Object System.Drawing.Pen ([System.Drawing.Color]::FromArgb(248, 255, 255, 255)), ([single](12 * $scale))
+        $smallCardBrush = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(252, 255, 255, 255))
+        $smallCardStrokePen = New-Object System.Drawing.Pen ([System.Drawing.Color]::FromArgb(118, 24, 36, 112)), ([single](5 * $scale))
+        $smallCardShadowBrush = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(46, 18, 28, 88))
+        $smallClipBrush = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(255, 198, 255, 72))
+        $smallClipHoleBrush = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(255, 24, 30, 118))
+        $smallHaloPen = New-Object System.Drawing.Pen ([System.Drawing.Color]::FromArgb(214, 255, 255, 255)), ([single](48 * $scale))
+        $smallKPen = New-Object System.Drawing.Pen ([System.Drawing.Color]::FromArgb(255, 23, 30, 132)), ([single](32 * $scale))
+
+        try {
+            Fill-RoundedRect $graphics $smallBgBrush (6 * $scale) (6 * $scale) (244 * $scale) (244 * $scale) (58 * $scale)
+            Stroke-RoundedRect $graphics $smallBorderPen (6 * $scale) (6 * $scale) (244 * $scale) (244 * $scale) (58 * $scale)
+
+            Fill-RoundedRect $graphics $smallClipBrush (88 * $scale) (10 * $scale) (80 * $scale) (44 * $scale) (20 * $scale)
+            Fill-RoundedRect $graphics $smallClipHoleBrush (112 * $scale) (26 * $scale) (32 * $scale) (10 * $scale) (5 * $scale)
+
+            $smallHaloPen.StartCap = [System.Drawing.Drawing2D.LineCap]::Round
+            $smallHaloPen.EndCap = [System.Drawing.Drawing2D.LineCap]::Round
+            $smallKPen.StartCap = [System.Drawing.Drawing2D.LineCap]::Round
+            $smallKPen.EndCap = [System.Drawing.Drawing2D.LineCap]::Round
+
+            $graphics.DrawLine($smallHaloPen, 82 * $scale, 66 * $scale, 82 * $scale, 202 * $scale)
+            $graphics.DrawLine($smallHaloPen, 96 * $scale, 138 * $scale, 176 * $scale, 66 * $scale)
+            $graphics.DrawLine($smallHaloPen, 96 * $scale, 138 * $scale, 186 * $scale, 206 * $scale)
+
+            $graphics.DrawLine($smallKPen, 82 * $scale, 66 * $scale, 82 * $scale, 202 * $scale)
+            $graphics.DrawLine($smallKPen, 96 * $scale, 138 * $scale, 176 * $scale, 66 * $scale)
+            $graphics.DrawLine($smallKPen, 96 * $scale, 138 * $scale, 186 * $scale, 206 * $scale)
+        }
+        finally {
+            $smallKPen.Dispose()
+            $smallHaloPen.Dispose()
+            $smallClipHoleBrush.Dispose()
+            $smallClipBrush.Dispose()
+            $smallCardShadowBrush.Dispose()
+            $smallCardStrokePen.Dispose()
+            $smallCardBrush.Dispose()
+            $smallBorderPen.Dispose()
+            $smallBgBrush.Dispose()
+            $graphics.Dispose()
+        }
+
+        return $bitmap
+    }
+
     $badgePath = New-SignalStackBadgePath $scale
     $shadowPath = New-SignalStackBadgePath $scale
     $shadowMatrix = New-Object System.Drawing.Drawing2D.Matrix
@@ -204,6 +257,17 @@ function ConvertTo-PngBytes {
     }
 }
 
+function Save-BitmapAsPng {
+    param(
+        [System.Drawing.Bitmap]$Bitmap,
+        [string]$Path
+    )
+
+    $directory = Split-Path -Parent $Path
+    New-Item -ItemType Directory -Force $directory | Out-Null
+    $Bitmap.Save($Path, [System.Drawing.Imaging.ImageFormat]::Png)
+}
+
 function Write-IcoFile {
     param(
         [string]$Path,
@@ -259,4 +323,23 @@ foreach ($size in $sizes) {
 }
 
 Write-IcoFile -Path $OutputPath -Sizes $sizes -ImageBytes $images.ToArray()
+
+$assetRoot = Split-Path -Parent $OutputPath
+$previewMap = @{
+    "ClipboardKeeper-exe-small.png" = 16
+    "ClipboardKeeper-exe-large.png" = 32
+    "ClipboardKeeper-exe-icon-preview.png" = 32
+    "ClipboardKeeper-preview.png" = 512
+}
+
+foreach ($previewName in $previewMap.Keys) {
+    $previewBitmap = New-ClipboardIconBitmap $previewMap[$previewName]
+    try {
+        Save-BitmapAsPng -Bitmap $previewBitmap -Path (Join-Path $assetRoot $previewName)
+    }
+    finally {
+        $previewBitmap.Dispose()
+    }
+}
+
 Write-Host "Generated $OutputPath"

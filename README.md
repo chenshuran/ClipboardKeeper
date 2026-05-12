@@ -1,5 +1,7 @@
 # Clipboard Keeper
 
+[中文说明](README.zh-CN.md)
+
 A small local Windows clipboard history utility for text and images.
 
 ## What it does

@@ -9,7 +9,7 @@ $outDir = Join-Path $root "bin"
 $objDir = Join-Path $root "obj"
 $outFile = Join-Path $outDir "ClipboardKeeper.exe"
 $buildFile = Join-Path $objDir "ClipboardKeeper.exe"
-$source = Join-Path $root "ClipboardKeeper.cs"
+$sources = Get-ChildItem -Path $root -Filter "*.cs" | Sort-Object FullName | Select-Object -ExpandProperty FullName
 $assemblyInfo = Join-Path $objDir "GeneratedAssemblyInfo.cs"
 $manifestFile = Join-Path $root "app.manifest"
 $iconScript = Join-Path $root "generate-icon.ps1"
@@ -87,7 +87,7 @@ $compilerArgs = @(
 )
 
 $compilerArgs += $resourceArgs
-$compilerArgs += $source
+$compilerArgs += $sources
 $compilerArgs += $assemblyInfo
 
 & $csc @compilerArgs

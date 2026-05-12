@@ -1,0 +1,5 @@
+Bootstrap Icons
+Source: https://icons.getbootstrap.com/
+License: MIT
+
+The toolbar and type icons are generated from Bootstrap Icons SVG path data and embedded as local PNG resources during build.

@@ -4,6 +4,16 @@
 
 一个小巧的本地 Windows 剪贴板历史工具，支持文本和图片。
 
+## 直接下载使用
+
+如果只想直接运行，不需要自己构建，请下载：
+
+```text
+download\ClipboardKeeper.exe
+```
+
+无需安装，双击 `ClipboardKeeper.exe` 即可运行。
+
 ## 功能
 
 - 在应用运行时捕获文本和图片剪贴板变化。

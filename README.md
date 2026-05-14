@@ -4,6 +4,16 @@
 
 A small local Windows clipboard history utility for text and images.
 
+## Download
+
+For a ready-to-run Windows executable, download:
+
+```text
+download\ClipboardKeeper.exe
+```
+
+No installer is required. Open `ClipboardKeeper.exe` directly.
+
 ## What it does
 
 - Captures text and image clipboard changes while the app is running.
